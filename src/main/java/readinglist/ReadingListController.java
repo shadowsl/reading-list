@@ -1,6 +1,5 @@
 package readinglist;
 
-import org.hibernate.annotations.Parameter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,7 +15,7 @@ import java.util.List;
  * @since reading list 1.0.0
  */
 @Controller
-@RequestMapping("/")
+@RequestMapping("/readingList")
 public class ReadingListController {
 
     private ReadingListRepository readingListRepository;
@@ -39,6 +38,6 @@ public class ReadingListController {
     public String addToReadingList (@PathVariable("reader") String reader, Book book) {
         book.setReader(reader);
         readingListRepository.save(book);
-        return "redirect:/{reader}";
+        return "redirect:/readingList/{reader}";
     }
 }
